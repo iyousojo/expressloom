@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Precoius</title>
+        <style>
+  .scroll-reveal {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s, transform 1s;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+</style>
+
+    </head>
+    <body>
+        <div class="scroll-reveal">Reveal me!</div>
+<script>
+  // Get all elements with the class 'scroll-reveal'
+const revealElements = document.querySelectorAll('.scroll-reveal');
+
+// Function to reveal elements
+function reveal() {
+  // Loop through each element
+  revealElements.forEach((element) => {
+    // Get the element's position
+    const elementTop = element.getBoundingClientRect().top;
+
+    // Get the window's height
+    const windowHeight = window.innerHeight;
+
+    // If the element is within the viewport, reveal it
+    if (elementTop < windowHeight) {
+      element.classList.add('revealed');
+    } else {
+      element.classList.remove('revealed');
+    }
+  });
+}
+
+// Add event listener to the window's scroll event
+window.addEventListener('scroll', reveal);
+
+// Reveal elements initially
+reveal();
+</script>
+        </body>
+       
+</html>
